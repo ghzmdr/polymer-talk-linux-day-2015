@@ -1,0 +1,53 @@
+:host {
+    display: block;
+    background-color: #dadada;
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    width: 100%;
+    height: 3rem;
+    border-bottom: 2px solid gray;
+    padding-left: 1rem;
+}
+
+header img {
+    display: inline-block;
+    height: 3rem;
+    padding: 1rem 0;
+}
+
+header h2 {
+    display: inline-block;
+    line-height: 3rem;
+    height: 3em;
+    margin: 0;
+    margin-left: 1rem;
+    vertical-align: top;
+}
+
+header aside {
+    float: right;
+    height: 100%;
+    width: 5rem;
+}
+
+.navigation {
+    display: inline-block;    
+    height: 3rem;    
+    width: 2rem;
+    line-height: 3rem;
+    color: grey;
+    text-decoration: none;
+    text-align: center;
+    transition: .2s ease-out;
+}
+
+.navigation--left:hover { 
+    transform: translateX(-20%);
+}
+
+.navigation--right:hover {
+    transform: translateX(20%);
+}
