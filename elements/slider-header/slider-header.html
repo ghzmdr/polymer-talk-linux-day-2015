@@ -1,0 +1,29 @@
+<dom-module id="slider-header">
+  <link rel="stylesheet" href="slider-header.css">
+
+  <template>
+    <img src="{{logo}}" alt="">
+    <h2>{{title}}</h2>
+
+    <aside>
+        <paper-button
+            on-click="prev"
+            class="navigate">
+
+            <iron-icon icon="arrow-back"/>
+        </paper-button>
+
+        <paper-button
+            on-click="next" 
+            class="navigate">
+            
+            <iron-icon icon="arrow-forward"/>
+        </paper-button>
+        
+    </aside>
+
+  </template>
+
+</dom-module>
+
+<script src="slider-header.js"></script>

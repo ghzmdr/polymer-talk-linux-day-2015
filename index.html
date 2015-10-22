@@ -3,16 +3,38 @@
     <head>
         <title>Polymer &amp; WebComponents - Linux Day 2015</title>
         
-        <link rel="import" href="libs/polymer/polymer.html">
+        <link rel="import" href="dependencies.html">
+        <link rel="import" href="elements.html">
 
-        <link rel="import" href="components.html">
         <link rel="stylesheet" href="main.css">
 
     </head>
 
-    <body unresolved>
+    <script>function handleResponse () {
+        debugger
+    }</script>
 
-        <slider-element>
+    <body unresolved>        
+        
+        <slider-element
+            title="Polymer &amp; WebComponents"
+            logo="/images/p-logo.png">
+
+            <slider-slide
+                position="curr"
+                url="slides/slide-1.html">                
+            </slider-slide>
+
+            <slider-slide
+                position="prev"
+                url="slides/slide-2.html">                
+            </slider-slide>
+
+            <slider-slide
+                position="prev"
+                url="slides/slide-3.html">
+            </slider-slide>
+
         </slider-element>        
 
         <script src="app.js"></script>

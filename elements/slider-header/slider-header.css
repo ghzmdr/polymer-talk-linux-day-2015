@@ -1,0 +1,32 @@
+:host {
+    display: block;
+    background-color: #dadada;
+    width: 100%;
+    height: 3rem;
+    padding-left: 1rem;
+}
+
+img {
+    display: inline-block;
+    height: 3rem;
+    padding: 1rem 0;
+}
+
+h2 {
+    display: inline-block;
+    line-height: 3rem;
+    height: 3em;
+    margin: 0;
+    margin-left: 1rem;
+    vertical-align: top;
+}
+
+aside {
+    float: right;
+    height: 100%;
+}
+
+.navigate {
+    display: inline-block;
+    min-width: 2rem;
+}

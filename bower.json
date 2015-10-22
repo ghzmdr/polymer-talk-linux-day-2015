@@ -1,0 +1,19 @@
+{
+  "name": "polymer-talk-linux-day-2015",
+  "version": "0.0.1",
+  "authors": [
+    "Vincent De Feo (ghzmdr)"
+  ],
+  "description": "Talk for the 2105 linux day",
+  "license": "ISC",
+  "dependencies": {
+    "paper-button": "PolymerElements/paper-button#~1.0.8",
+    "iron-ajax": "PolymerElements/iron-ajax#~1.0.6",
+    "iron-icons": "PolymerElements/iron-icons#~1.0.4",
+    "iron-icon": "PolymerElements/iron-icon#~1.0.7",
+    "polymer": "~1.1.5",
+    "paper-header-panel": "PolymerElements/paper-header-panel#~1.0.5",
+    "paper-material": "PolymerElements/paper-material#~1.0.3"
+  },
+  "devDependencies": {}
+}

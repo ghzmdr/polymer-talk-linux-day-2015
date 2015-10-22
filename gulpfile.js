@@ -10,6 +10,7 @@ var vulcanize = require('gulp-vulcanize')
 var sass = require('gulp-sass')
 
 var sourcemaps = require('gulp-sourcemaps')
+
 var CFG = {
 
     JS: {
@@ -19,7 +20,7 @@ var CFG = {
 
     HTML: {
         INDEX: 'index.html',
-        COMPONENTS_ENTRY: 'components/components.html',
+        elements_ENTRY: 'elements/elements.html',
     },
 
     SASS: {
@@ -44,14 +45,32 @@ gulp.task('build:sass', function () {
         .pipe(sync.stream())
 })
 
-gulp.task('build:html:index', function () {
+gulp.task('build:html:static', function () {
     gulp.src('index.html')
+        .pipe(gulp.dest(CFG.BUILD_DEST))
+        .pipe(sync.reload({stream: true, once: true}))
+
+    gulp.src('slides/**/*.html')
+        .pipe(gulp.dest(CFG.BUILD_DEST + '/slides/'))
+        .pipe(sync.reload({stream: true, once: true}))
+})
+
+gulp.task('build:html:elements', function () {
+    gulp.src('elements/elements.html')
+        .pipe(vulcanize({
+                stripComments: true,
+                inlineCss: true,
+                inlineScripts: true
+            }).on('error', function (a,s,d) {console.log(a,s,d)}))
         .pipe(gulp.dest(CFG.BUILD_DEST))
         .pipe(sync.reload({stream: true, once: true}))
 })
 
-gulp.task('build:html:components', function () {
-    gulp.src('components/components.html')
+gulp.task('build:js', function () {    
+})
+
+gulp.task('build:deps', function () {
+    gulp.src('scripts/dependencies.html')
         .pipe(vulcanize({
                 stripComments: true,
                 inlineCss: true,
@@ -61,28 +80,7 @@ gulp.task('build:html:components', function () {
         .pipe(sync.reload({stream: true, once: true}))
 })
 
-gulp.task('build:js', function () {
-    var b = browserify({
-        entries: CFG.JS.ENTRY,
-        debug: true
-    }).on('error', gutil.log)
-
-    return b.bundle()
-        .on('error', function (err) {
-            console.log(err.toString())
-            this.emit("end")
-        })
-        .pipe(source(CFG.JS.NAME))
-        .pipe(gulp.dest(CFG.BUILD_DEST))
-        .pipe(sync.reload({stream: true, once: true}))
-})
-
-gulp.task('build:deps', function () {
-    gulp.src('./bower_components/**/*')
-        .pipe(gulp.dest(CFG.BUILD_DEST + '/libs'))
-})
-
-gulp.task('build', ['build:deps', 'build:html:index', 'build:images', 'build:html:components', 'build:js', 'build:sass'], function () {
+gulp.task('build', ['build:deps', 'build:html:static', 'build:images', 'build:html:elements', 'build:js', 'build:sass'], function () {
 })
 
 gulp.task('serve', ['build'], function () {
@@ -90,11 +88,12 @@ gulp.task('serve', ['build'], function () {
     sync.init({
         server: CFG.BUILD_DEST
     })
-    
 
-    gulp.watch('index.html', ['build:html:index'])
-    gulp.watch(['components/**/*.html', 'components/**/*.css', 'components/**/*.js'], ['build:html:components'])
+    gulp.watch('index.html', ['build:html:static'])
+    gulp.watch('slides/**/*.html', ['build:html:static'])
+    gulp.watch(['elements/**/*.html', 'elements/**/*.css', 'elements/**/*.js'], ['build:html:elements'])
 
     gulp.watch('scripts/**/*.js', ['build:js'])
-    gulp.watch('styles/**/*.scss', ['build:sass'])    
+    gulp.watch('styles/**/*.scss', ['build:sass'])
+    gulp.watch('scripts/dependencies.html', ['build:deps'])
 })

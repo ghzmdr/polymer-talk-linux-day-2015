@@ -1,0 +1,30 @@
+{
+  "name": "polymer-talk-linux-day-2015",
+  "version": "1.0.0",
+  "description": "talk for the linux day 2015",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.9.11",
+    "browserify": "^11.2.0",
+    "gulp": "^3.9.0",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-util": "^3.0.7",
+    "gulp-vulcanize": "^6.0.1",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghzmdr/polymer-talk-linux-day-2015.git"
+  },
+  "author": "Vincent De Feo (ghzmdr)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ghzmdr/polymer-talk-linux-day-2015/issues"
+  },
+  "homepage": "https://github.com/ghzmdr/polymer-talk-linux-day-2015#readme"
+}

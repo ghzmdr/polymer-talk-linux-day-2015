@@ -1,0 +1,24 @@
+<dom-module id="slider-element">
+  <link rel="stylesheet" href="slider-element.css">
+
+  <template>
+    
+    <paper-header-panel class="flex" mode="standard">
+        <slider-header 
+            id="sliderHeader"
+            class="paper-header"
+            title="{{title}}" 
+            logo="{{logo}}">
+
+        </slider-header>
+
+        <slider-content id="sliderContent">        
+          <content></content>
+        </slider-content>
+
+    </paper-header-panel>
+  </template>
+
+</dom-module>
+
+<script src="slider-element.js"></script>
