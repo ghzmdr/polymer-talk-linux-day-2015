@@ -1,14 +1,17 @@
-<dom-module id="slider-slide" attributes="currentSlide">
+<dom-module id="slider-slide">
     <link rel="stylesheet" href="slider-slide.css">
 
     <template>
         <iron-ajax    
             id="ajax"         
             url="{{url}}"
-            handle-as="text"
+            handle-as="text"            
             on-response="appendResult">
         </iron-ajax>
-        <paper-material id="material"></paper-material>
+
+        <slide-material
+            id="material">
+        </slide-material>
     </template>
 
 </dom-module>

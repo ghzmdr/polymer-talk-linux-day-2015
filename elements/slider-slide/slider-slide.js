@@ -2,48 +2,129 @@ Polymer({
 
     is: 'slider-slide',
 
+    behaviors: [Polymer.NeonAnimatableBehavior, Polymer.NeonAnimationRunnerBehavior],
+
     properties: {
         position: {
             type: String,
-            value: function () {
-                return this.position
+            observer: 'applyCurrentPosition'
+        }
+    },
+
+    listeners: {
+        'track': 'onTrack',
+        'neon-animation-finish': 'fixElementStyle'
+    },
+
+    ready: function () {        
+        this.$.ajax.generateRequest()
+        this.buildAnimationConfig()
+    },
+
+    buildAnimationConfig: function (currentLedft) {
+        this.animationConfig = {
+            'next-in': [{
+                name: 'transform-animation',
+                transformFrom: 'translate3d(0, 0, 0.001px) scale(0.8)',
+                transformTo: 'translate3d(0, 0, 0.001px) scale(1)',
+                node: this
+            }], 
+            'next-out': [{
+                name: 'transform-animation',
+                transformFrom: 'translate3d(0, 0, 0.001px) scale(1)',
+                transformTo: 'translate3d(0, 0, 0.001px) scale(0.8)',
+                node: this
+            }],
+            'prev-in': [{
+                name: 'transform-animation',
+                transformFrom: 'translate3d(-150%, 0, 0.001px) scale(1)',
+                transformTo: 'translate3d(0, 0, 0.001px) scale(1)',
+                node: this
+            }],
+            'prev-out': [{
+                name: 'transform-animation',
+                transformFrom: 'translate3d(0, 0, 0.001px) scale(1)',
+                transformTo: 'translate3d(-150%, 0, 0.001px) scale(1)',
+                node: this
+            }]
+        }
+    },
+
+    applyPosition: function (position) {        
+        if (!this.prevPosition){
+            if (position == 'curr')
+                this.playAnimation('next-in')
+            else this.fixElementStyle()
+
+            this.prevPosition = position
+            return
+        }
+
+        this.cancelAnimation()
+
+        switch (position) {
+            case 'next':
+                this.$.material.elevation = 1                
+
+                if (this.prevPosition == 'curr')                     
+                    this.playAnimation('next-out')
+                
+                break
+            case 'curr':
+                this.$.material.elevation = 2                
+                if (this.prevPosition == 'prev')
+                    this.playAnimation('prev-in')
+                else this.playAnimation('next-in')
+
+                break
+
+            case 'prev':
+                this.$.material.elevation = 3
+
+                if (this.prevPosition == 'curr')
+                    this.playAnimation('prev-out')
+
+                break
+        }
+
+        this.prevPosition = position
+    },
+
+    applyCurrentPosition: function () {
+        this.applyPosition(this.position)
+    },
+
+    appendResult: function (e) {
+        this.$.material.$$('#container').innerHTML = e.detail.response
+    },
+
+    onTrack: function (e, track) {
+        var moveThresold = 100
+
+        if (track.state == 'end') {
+            if (Math.abs(track.dx) >= moveThresold) {
+                if (track.dx < 0) {
+                    this.fire('swipe-left')
+                } else {
+                    this.fire('swipe-right')                    
+                }                
             }
         }
     },
 
-    ready: function () {        
-        this.$.ajax.generateRequest()        
+    fixElementStyle: function () {        
 
-        this.buildTimelines()        
-
-        this.applyState(this.position)
-    },
-
-    buildTimelines: function () {
-        this.enterTimeline = new TimelineLite()
-        this.exitTimeline = new TimelineLite()
-
-        this.enterTimeline.fromTo(this.$.material, .5, {scale: 0.8, zIndex: 0}, {scale: 1, zIndex: 1})
-        this.enterTimeline.stop()
-
-        this.exitTimeline.fromTo(this.$.material, .5, {x: '0%', zIndex: 1}, {x: '-150%', zIndex: 2})
-        this.exitTimeline.stop()
-    },
-
-
-    applyState: function (stateName) {
-        if (stateName == 'prev')
-            this.exitTimeline.play()
-        if (stateName == 'next')
-            this.enterTimeline.reverse()
-        if (stateName == 'curr')
-            this.enterTimeline.reverse()
-    },
-
-    appendResult: function (e) {
-        var el = document.createElement('div')
-        el.innerHTML = e.detail.response
-        this.$.material.appendChild(el);
+        switch (this.position) {
+            case 'next':
+                this.transform('scale(0.8) translate3d(0, 0, 0.001px)')
+                break
+            case 'curr':
+                this.transform('scale(1) translate3d(0, 0, 0.001px)')
+                break
+            case 'prev':
+                this.transform('scale(1) translate3d(-150%, 0, 0.001px)')
+                break
+        }
     }
 
 });
