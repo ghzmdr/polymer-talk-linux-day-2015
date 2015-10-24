@@ -22,6 +22,9 @@
         wrapper.appendChild(yay)
 
         // <style> and <script> tags get injected and evaluated instantly
+        // a questo punto yay punta al nodo nel vecchio documento
+        // per manipolarlo bisogna cercarlo di nuovo nel documento corrente        
+        console.log(yay)
         loopColor(wrapper)
     </script>
 </body>

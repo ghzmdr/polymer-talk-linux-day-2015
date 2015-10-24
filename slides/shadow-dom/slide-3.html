@@ -1,0 +1,19 @@
+<h3><span class="code html">&lt;templates&gt;</span></h3>
+
+I template sono tag per definire parti di HTML riusabili e condizionali
+Tutto ciò che è all'interno di un template fa parte dello Shadow DOM
+
+<code>
+    &lt;template&gt;
+        
+        &lt;style&gt;
+            h3 {color: red;}
+            h2 {color: blue;}
+        &lt;/style&gt;
+
+        &lt;h3&lt;I'm visible in the presentation&gt;/h3&lt;
+        &lt;h2&lt;But not directly visible on the DOM!&gt;/h2&lt;
+
+    &lt;/template&gt;
+</code>
+
