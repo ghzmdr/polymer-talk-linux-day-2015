@@ -1,0 +1,37 @@
+<!-- styles get injected via import -->
+<style>    
+    h1.loop-color {
+        font-size: 4rem;
+        position: absolute;
+        left: 50%; top: 50%;
+        transform: translate3D(-50%, -25vh, 0.001px);
+    }
+</style>
+
+<!-- html doesn't get injected via import -->
+<h1 class="loop-color">
+    YAY!!!
+</h1>
+
+<!-- scripts get injected via import -->
+<script>    
+    var el = document.querySelectorAll('.loop-color')[0]    
+    var colors = ["#ee4035", "#f37736", "#fdf498", "#7bc043", "#0392cf"]
+    
+    var ci = 0
+    var halfSpeed = true    
+
+    //inject function in the global scope
+    function loopColor(element) {
+        requestAnimationFrame(function () {
+            loopColor(element)
+        })
+
+        halfSpeed = !halfSpeed     
+        if (halfSpeed) return
+        
+        element.style.color = colors[ci]        
+        ci = (ci+1) % colors.length        
+    }
+    
+</script>
