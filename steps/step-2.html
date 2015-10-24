@@ -1,0 +1,36 @@
+<body>
+    
+<template>
+        
+        <style>
+            h3 {color: red;}
+        </style>
+
+        <h3>I'm part of the template</h3>
+
+</template>
+
+<script>
+
+debugger
+//find the template node
+var template = document.querySelector('template')
+
+debugger
+//import it's content in the DOM to clone it
+var clone = document.importNode(template.content, true)
+
+debugger
+//insert it somewhere
+document.body.appendChild(clone)
+
+//as many times as you like
+var c = 4
+while (c--) {
+    clone = document.importNode(template.content, true)
+    document.body.appendChild(clone)
+}
+
+
+</script>
+</body>

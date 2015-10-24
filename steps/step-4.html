@@ -1,0 +1,21 @@
+<say-hi-element
+    greet-word="HI!">
+    Say Hi
+</say-hi-element>    
+
+<script>
+    //define custom functionalities
+    SayHiPrototype = Object.create(HTMLElement.prototype)
+    
+    SayHiPrototype.greet = function () {
+        //custom attributes work out of the box
+        alert(this.getAttribute('greet-word'))
+    }
+
+    //register the element
+    window.SayHi = document.registerElement('say-hi-element', {prototype: SayHiPrototype})
+
+    var sayHi = document.querySelector('say-hi-element')
+    sayHi.addEventListener('click', sayHi.greet.bind(sayHi))
+
+</script>

@@ -1,6 +1,13 @@
+<h3 class="title">Scope dell'import</h3>
+<div class="content">
+    <p>
+        CSS e JS sono inietatti nello scope globale.
+    </p>
+    <p>i nodi non vengono importati, bisogna farlo via JS</p>
+    <code class="code js">
+        var importedDocument = document.querySelector('#my-import').import
+        importedDocument.querySelector('div').style.color = "red"
+    </code>
+</div>
 
-CSS e JS sono inietatti nello scope globale,
-
-i nodi non vengono importati, bisogna farlo via JS
-
-<a href="steps/step-1.html" class="goto-step" target="_blank">Step1</a>
+<a href="steps/step-1.html" class="step" target="_blank">Step1</a>

@@ -1,2 +1,17 @@
-<h3>&lt;dom-module&gt;</h3>
-Essi sono utilizzati insieme ai <span class="code html">&lt;dom-module&gt;</span> per creare elementi riusabili
+<h3 class="title">Insertion Points</h3>
+
+<div class="content">
+    <p>Si può rendere visibile il contenuto di un elemento con shadow root definendo degli insertion point</p>
+
+    <code class="html">    
+        &lt;template id="myHeader"&gt;
+            &lt;style&gt;.myHeader {color: green;}&lt;/style&gt;
+            &lt;h3 class="my-header"&gt;
+                &lt;content&gt;&lt;/content&gt;
+            &lt;/h3&gt;
+        &lt;/template&gt;
+    </code>
+
+    <p>Il contenuto dell'elemento che userà questo template come shadow root verrà inserito al posto di &lt;content&gt; invece di sparire</p>
+</div>
+

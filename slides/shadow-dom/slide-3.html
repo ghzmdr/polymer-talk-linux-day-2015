@@ -1,19 +1,12 @@
-<h3><span class="code html">&lt;templates&gt;</span></h3>
+<h3 class="title">&lt;templates&gt;</h3>
 
-I template sono tag per definire parti di HTML riusabili e condizionali
-Tutto ciò che è all'interno di un template fa parte dello Shadow DOM
+<div class="content">
+    <p>I template sono tag per definire parti di HTML riusabili e/o condizionali
+Il template non ha presentazione, racchiude solo markup</p>
+    <p>Si può clonare ed acedere al suo contenuto tramite l'attributo <span class="code js">content</span></p>
+    <p>Per (ri)utilizzarlo bisogna importarne il contenuto nel DOM, 
+e poi inserire manualmente il nodo clone così ottenuto</p>
+</div>
 
-<code>
-    &lt;template&gt;
-        
-        &lt;style&gt;
-            h3 {color: red;}
-            h2 {color: blue;}
-        &lt;/style&gt;
 
-        &lt;h3&lt;I'm visible in the presentation&gt;/h3&lt;
-        &lt;h2&lt;But not directly visible on the DOM!&gt;/h2&lt;
-
-    &lt;/template&gt;
-</code>
-
+<a class="step" href="steps/step-2.html" target="_blank">Step 2</a>

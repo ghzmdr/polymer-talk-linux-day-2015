@@ -1,0 +1,29 @@
+<body>
+    
+<template id="custom-heading">
+    <style>h3 {color: green;}</style>
+    <h3>
+        Shadow DOM / <content></content>
+    </h3>
+</template>
+
+
+<div>Light DOM</div>
+
+<script>
+
+//find the template node
+var customHeading = document.querySelector('#custom-heading')
+//import it's content in the DOM to clone it
+var cHTemplate = document.importNode(customHeading.content, true)
+
+debugger
+//create a shadow root for the div
+var divShadow = document.querySelector('div').createShadowRoot()
+
+debugger
+//append the template to it's shadow root
+divShadow.appendChild(cHTemplate)
+
+</script>
+</body>

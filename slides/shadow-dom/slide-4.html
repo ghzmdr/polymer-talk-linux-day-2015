@@ -1,2 +1,18 @@
-<h4>Insertion points</h4>
-Per inserire contenuto all'interno di un 
+<h3 class="title">templates e shadowRoot</h3>
+
+<div class="content">    
+    <p>Combinando queste due tecniche si possono ottenere elementi incapsulati, riutilizzabili e modulari</p>
+    <p>A questo punto nella presentazione vedremo il contenuto del template, sul DOM soltanto un <span class="code html">&lt;div&gt;</span>
+    tuttavia il contenuto del div è nascosto dalla presentazione</p>
+    <code class="code js">
+        var divShadow = document.querySelector('#my-div').createShadowRoot()
+
+        var template = document.querySelector('#my-template')
+        var templateClone = document.importNode(template.content, true)
+
+        divShadow.appendChild(templateClone)
+    </code>
+</div>
+
+
+
