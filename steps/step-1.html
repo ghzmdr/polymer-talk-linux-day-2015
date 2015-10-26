@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>STEP -1</title>
+</head>
+<body>
+    <link rel="import" id="import-yay" href="files/yay.html">
+    
+    <div class="wrapper">        
+    </div>
+
+    <script type="text/javascript">
+        // document node imported from HTML Import        
+        var importYay = document.querySelector('#import-yay').import
+
+        //grab the element and remove it from the original document
+        var yay = importYay.querySelector('h1.loop-color')
+        importYay.body.removeChild(yay)
+
+        //inject it in the DOM
+        var wrapper =document.querySelector('.wrapper')
+        wrapper.appendChild(yay)
+
+        // <style> and <script> tags get injected and evaluated instantly
+        loopColor(wrapper)
+    </script>
+</body>
+</html>

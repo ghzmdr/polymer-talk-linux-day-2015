@@ -53,6 +53,10 @@ gulp.task('build:html:static', function () {
     gulp.src('slides/**/*.html')
         .pipe(gulp.dest(CFG.BUILD_DEST + '/slides/'))
         .pipe(sync.reload({stream: true, once: true}))
+
+    gulp.src('steps/**/*.html')
+        .pipe(gulp.dest(CFG.BUILD_DEST + '/steps/'))
+        .pipe(sync.reload({stream: true, once: true}))
 })
 
 gulp.task('build:html:elements', function () {
@@ -89,8 +93,7 @@ gulp.task('serve', ['build'], function () {
         server: CFG.BUILD_DEST
     })
 
-    gulp.watch('index.html', ['build:html:static'])
-    gulp.watch('slides/**/*.html', ['build:html:static'])
+    gulp.watch(['index.html', 'slides/**/*.html', 'steps/**/*.html'], ['build:html:static'])
     gulp.watch(['elements/**/*.html', 'elements/**/*.css', 'elements/**/*.js'], ['build:html:elements'])
 
     gulp.watch('scripts/**/*.js', ['build:js'])
