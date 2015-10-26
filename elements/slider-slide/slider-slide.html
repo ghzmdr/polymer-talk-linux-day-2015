@@ -1,5 +1,5 @@
 <dom-module id="slider-slide">
-    <link rel="stylesheet" href="slider-slide.css">
+    <link rel="stylesheet" href="slider-slide.css" attributes="number">
 
     <template>
         <iron-ajax    
@@ -9,9 +9,11 @@
             on-response="appendResult">
         </iron-ajax>
 
-        <slide-material
+        <paper-material
             id="material">
-        </slide-material>
+          <div id="container"></div>          
+          <footer><span class="page-number">{{number}}</span></footer>          
+        </paper-material> 
     </template>
 
 </dom-module>

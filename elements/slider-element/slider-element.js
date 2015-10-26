@@ -22,6 +22,7 @@ Polymer({
             slide.style.zIndex = this.slides.length - index;
             slide.addEventListener('swipe-left', this.nextSlide.bind(this))
             slide.addEventListener('swipe-right', this.prevSlide.bind(this))
+            slide.setAttribute('number', index+1)
         }.bind(this))
 
         this.current = 0
@@ -41,24 +42,17 @@ Polymer({
         this.gotoSlide(this.current)
     },
 
-    /* 
-        This method just updates slider-slide's position property
-        The slides internally handle that attribute's changes
-    */
-    gotoSlide: function (index) {        
-        // [HACK] Polymer child observers crash 
-        // if try to access the property when's not ready
-        if (!this.slides[0].position) return
+    gotoSlide: function (index) {
             
         console.info('[GOTO] ', index)
 
         for (var si = 0; si < index; ++si)
-            this.slides[si].position = 'prev'
+            this.slides[si].setAttribute('position', 'prev')
 
-        this.slides[index].position = 'curr'        
+        this.slides[index].setAttribute('position', 'curr')
 
         for (var si = index+1; si < this.slides.length; ++si)
-            this.slides[si].position = 'next'
-    }
+            this.slides[si].setAttribute('position', 'next')
+    }    
 
 });

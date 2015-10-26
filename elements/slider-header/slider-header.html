@@ -2,30 +2,39 @@
   <link rel="stylesheet" href="slider-header.css">
 
   <template>
-    <div id="logo-container">
-        <img src="{{logo}}" alt="">
-        <img src="{{logo}}" alt="">        
-    </div>
-    
-    <h1>{{title}}</h1>
+    <paper-header-panel class="flex" mode="waterfall-tall">
+        <paper-toolbar
+            class="tall"
+            id="sliderHeader">
+            <div>                
+                <div id="logo-container">
+                    <img src="{{logo}}" class="logo logo--shadow-mask" alt="">
+                    <img src="{{logo}}" class="logo" alt="">        
+                </div>
+                <h1>{{title}}</h1>
+            </div>
 
-    <aside>
-        <paper-button
-            on-click="prev"
-            class="navigate">
+            <span class="flex"></span>
 
-            <iron-icon icon="arrow-back"/>
-        </paper-button>
+            <paper-button
+                on-click="prev"
+                class="navigate">
 
-        <paper-button
-            on-click="next" 
-            class="navigate">
-            
-            <iron-icon icon="arrow-forward"/>
-        </paper-button>
+                <iron-icon icon="arrow-back"/>
+            </paper-button>
+
+            <paper-button
+                on-click="next" 
+                class="navigate">
+                
+                <iron-icon icon="arrow-forward"/>
+            </paper-button>
+        </paper-toolbar>
+
+        <content></content>
         
-    </aside>
-
+    </paper-header-panel>
+    <content></content>
   </template>
 
 </dom-module>

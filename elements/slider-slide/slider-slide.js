@@ -8,6 +8,9 @@ Polymer({
         position: {
             type: String,
             observer: 'applyCurrentPosition'
+        },
+        number: {
+            type: String
         }
     },
 
@@ -17,7 +20,7 @@ Polymer({
     },
 
     ready: function () {        
-        this.$.ajax.generateRequest()
+        this.$.ajax.generateRequest()        
         this.buildAnimationConfig()
     },
 
@@ -94,8 +97,8 @@ Polymer({
         this.applyPosition(this.position)
     },
 
-    appendResult: function (e) {
-        this.$.material.$$('#container').innerHTML = e.detail.response
+    appendResult: function (e) {        
+        this.$$('#container').innerHTML = e.detail.response        
     },
 
     onTrack: function (e, track) {
@@ -125,6 +128,10 @@ Polymer({
                 this.transform('scale(1) translate3d(-150%, 0, 0.001px)')
                 break
         }
+    },
+
+    setNumber: function (num) {
+        this.number = num
     }
 
 });

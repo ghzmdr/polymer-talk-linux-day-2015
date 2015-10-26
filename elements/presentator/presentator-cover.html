@@ -1,0 +1,80 @@
+<!--
+
+PresentationCover
+
+//____ Model: 
+
+"_"     as first char of the prop name means optional
+"...""  means there can be more
+
+presentation = {
+    title: String,
+    logo: String (an url),
+    author: {
+        name: String,
+        _nick: String,
+        _socials: [{
+            icon: String,
+            url: String (url)
+        }]
+    }
+}
+
+-->
+
+<dom-module id="presentator-cover">
+
+    <template>
+        <h2 class="title">{{meta.title}}</h2>
+        <img src="{{meta.logo}}" class="logo">
+        
+        <h3 class="author">
+            <span class="author__name">{{meta.author.name}}</span>            
+            <template is="dom-if" if="{{meta.author.nick}}">                
+                <span class="author__nick">{{meta.author.nick}}</span>
+            </template>
+        </h3>
+
+        <template is="dom-if" if="{{meta.author.socials}}">
+            <div class="socials">
+                <template is="dom-repeat" items="{{meta.author.socials}}">                    
+                    
+                    <paper-button noink>
+                        <paper-icon icon="{{item.icon}}">
+                            <a href="{{item.url}}"></a>
+                        </paper-icon>
+                    </paper-button>
+
+                </template>                
+            </div>
+        </template>
+
+    </template>
+
+</dom-module>
+
+<script>
+    Polymer({
+        is: 'presentator-cover',
+        properties: {
+            'meta': {
+                type: Object,
+                value: function () {
+                    return {
+                        title: 'Polymer & WebComponents',
+                        logo: 'images/p-logo.png',
+                        author: {                            
+                            name: 'Vincent De Feo',
+                            nick: 'ghzmdr',
+                            socials: [{
+                                url: 'https://github.com/ghzmdr',
+                                icon: 'images/logo.png'
+                            }]
+                        }
+
+                    }
+                }                
+            }
+        }
+    })
+</script>

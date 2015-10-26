@@ -14,7 +14,8 @@
     "polymer": "~1.1.5",
     "paper-header-panel": "PolymerElements/paper-header-panel#~1.0.5",
     "paper-material": "PolymerElements/paper-material#~1.0.3",
-    "neon-animation": "PolymerElements/neon-animation#~1.0.7"
+    "neon-animation": "PolymerElements/neon-animation#~1.0.7",
+    "paper-toolbar": "PolymerElements/paper-toolbar#~1.0.4"
   },
   "devDependencies": {}
 }

@@ -1,44 +1,38 @@
 :host {
-    display: block;
-    background-color: #3F51B5;
-    color: #FFFFFF;    
-    font-weight: lighter;
-    width: 100%;
-    font-size: 1.2rem;
-    height: 3rem;
-    padding-left: 1rem;
 }
 
 #logo-container {
     position: relative;
-    height: 100%;
-    width: 3rem;
     display: inline-block;
-    vertical-align: top;    
+    vertical-align: middle;
+    height: 3rem;
 }
 
-img {
-    position: absolute;
+img.logo {
+    position: relative;
+    z-index: 1;
+    max-width: none;
+    padding: .6em;
     height: 100%;
-    padding: .8rem;
 }
 
-img:first-child {
+img.logo--shadow-mask {
+    position: absolute;
+    z-index: 0;
     -webkit-filter: blur(2px) brightness(0);
 }
 
-h1 {
-    display: inline-block;
-    line-height: 3rem;
-    height: 100%;
-    margin: 0;
-    margin-left: 1.2rem;
-    vertical-align: top;
+paper-toolbar {
+    margin-bottom: -4rem;
 }
 
-aside {
-    float: right;
+h1 {
     height: 100%;
+    display: inline-block;    
+    margin-left: 1rem;
+    vertical-align: middle;
+    width: 5rem;
+    line-height: 1.2em;
 }
 
 .navigate {
